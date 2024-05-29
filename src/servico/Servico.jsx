@@ -4,7 +4,7 @@ import axios from 'axios';
 
 function Servico() {
 
-    const [servico, setServico] = useState({ nomeCliente: '', dataInicio: '', dataFim: '', descricaoServico: '', valorServico: '',valorPago: '', dataPagamento: '' });
+    const [servico, setServico] = useState({ nomeCliente: '', dataInicio: '', dataFim: '', descricaoServico: '', valorServico: '', valorPago: '', dataPagamento: '' });
     const [servicos, setServicos] = useState([]);
 
     function handleChange(event) {
@@ -13,10 +13,10 @@ function Servico() {
 
     function hanbleSubmit(event) {
         event.preventDefault();
-        axios.post("http://localhost:8080/api/servico/create",servico).then(result=>{
+        axios.post("http://localhost:8080/api/servico/create", servico).then(result => {
             console.log(result);
         });
-        
+
     }
 
     return (
@@ -60,7 +60,7 @@ function Servico() {
                                 id="dataFim"
                                 value={servico.dataFim}
                                 name="dataFim"
-                                type="date"></input> 
+                                type="date"></input>
                         </div>
 
                     </div>
@@ -120,13 +120,35 @@ function Servico() {
 
                     </div>
 
-                    <br/>
+                    <br />
                     <div>
                         <button type="submit" className="btn btn-success" value="Cadastrar"> Cadastrar</button>
                     </div>
-                    
+
                 </div>
             </form>
+
+            <hr /><hr />
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome Cliente</th>
+                        <th scope="col">Descrição</th>
+                        <th scope="col">Valor Serviço</th>
+                        <th scope="col">Opções</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {servicos.map(serv =>
+                        <tr>
+                            <th>{serv.nomeCliente}</th>
+                            <td>{serv.descricaoServico}</td>
+                            <td>{serv.valorServico}</td>
+                        </tr>
+                    )}
+
+                </tbody>
+            </table>
         </div>
     );
 }
