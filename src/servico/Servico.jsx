@@ -96,7 +96,7 @@ function Servico() {
           <div>
             <label className="form-label float-left fw-semibold required-label">
               {" "}
-              Nome do Serviço
+              Nome do Cliente
             </label>
             <div style={{ width: "auto" }}>
               <input
